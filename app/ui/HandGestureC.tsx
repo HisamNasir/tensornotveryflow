@@ -7,11 +7,10 @@ import { FaSpinner } from 'react-icons/fa';
 interface HandGestureComponentProps {
   image: string;
 }
-
-const HandGestureComponent: React.FC<HandGestureComponentProps> = ({ image }) => {
+const HandGestureC: React.FC<HandGestureComponentProps> = ({ image }) => {
     const [numFingers, setNumFingers] = useState<number | null>(null);
     const [isLoading, setIsLoading] = useState(true);
-  
+
     useEffect(() => {
         const runHandpose = async () => {
           try {
@@ -26,21 +25,19 @@ const HandGestureComponent: React.FC<HandGestureComponentProps> = ({ image }) =>
                 const extendedFingers = fingerTips.filter((tip) => landmarks[tip][2] > 0.5).length;
                 setNumFingers(extendedFingers);
               }
-              setIsLoading(false); // Set loading to false after processing
+              setIsLoading(false);
             };
           } catch (error) {
             console.error('Error loading handpose model:', error);
-            setIsLoading(false); // Set loading to false in case of an error
+            setIsLoading(false);
           }
         };
-    
         runHandpose();
       }, [image]);
     
       if (isLoading) {
         return <div className="flex justify-center gap-2  items-center"><span className=' flex j items-center animate-spin m-2'><FaSpinner/> </span> Loading...</div>; // You can replace this with a loading spinner or animation
       }
-
   return (
     <div className="flex justify-center gap-2  items-center">
         <div className='my-4 p-2 outline-dashed outline-2 rounded-xl bg-sky-100'>
@@ -54,4 +51,4 @@ const HandGestureComponent: React.FC<HandGestureComponentProps> = ({ image }) =>
   );
 };
 
-export default HandGestureComponent;
+export default HandGestureC;

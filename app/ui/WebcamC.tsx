@@ -8,7 +8,7 @@ interface WebcamComponentProps {
   onCapture: (image: string) => void;
 }
 
-const WebcamComponent: React.FC<WebcamComponentProps> = ({ onCapture }) => {
+const WebcamC: React.FC<WebcamComponentProps> = ({ onCapture }) => {
   const webcamRef = useRef<Webcam>(null);
 
   const capture = useCallback(() => {
@@ -44,4 +44,4 @@ const WebcamComponent: React.FC<WebcamComponentProps> = ({ onCapture }) => {
   );
 };
 
-export default WebcamComponent;
+export default WebcamC;
